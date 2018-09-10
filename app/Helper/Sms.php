@@ -18,15 +18,19 @@ class Sms
 		$param = [
             'full_url' => true,
             'method' => 'POST',
-            'url' => env('API_SMS_URL', '').'/sms-send',
+            'url' => env('API_SMS_URL', '').'/restapi/sms/1/text/single',
             'request' => [
                 'allow_redirects' => true,
-                'headers' => [
-                    'Authorization' => self::key()
+                'auth' => [
+                    'dimas10',
+                    '@Dimas123'
                 ],
-                'form_params' => [
-                    'type' => 'reguler',
-                    'number' => $data['number'],
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                ],
+                'json' => [
+                    'from' => 'Umrah+Uzbek',
+                    'to' => $data['number'],
                     'text' => $data['text']
                 ]
             ]
@@ -34,36 +38,4 @@ class Sms
 		return Guzzle::request($param);
 		// return $param;
 	}
-
-    public static function saldo()
-    {
-        $param = [
-            'full_url' => true,
-            'method' => 'GET',
-            'url' => env('API_SMS_URL', '').'/saldo-cek',
-            'request' => [
-                'allow_redirects' => true,
-                'headers' => [
-                    'Authorization' => self::key()
-                ],
-            ]
-        ];
-        return Guzzle::request($param);
-    }
-
-    public static function historySms()
-    {
-        $param = [
-            'full_url' => true,
-            'method' => 'GET',
-            'url' => env('API_SMS_URL', '').'/history-sms',
-            'request' => [
-                'allow_redirects' => true,
-                'headers' => [
-                    'Authorization' => self::key()
-                ],
-            ]
-        ];
-        return Guzzle::request($param);
-    }
 }

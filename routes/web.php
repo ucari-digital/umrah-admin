@@ -10,9 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+use App\Helper\Sms;
 Route::get('/', 'Auth\LoginController@index');
 Route::post('login', 'Auth\LoginController@login');
+
+Route::get('smsxxxx', function(){
+	$data = [
+		'number' => '628159510969',
+		'text' => 'Hello'
+	];
+	return Sms::send($data);
+});
 
 Route::get('revoke', function(){
 	Auth::logout();
