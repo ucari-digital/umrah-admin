@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
-use App\Http\Controllers\SMSController as Sms;
+use App\Helper\Sms;
 use App\Helper\Response;
 use App\Helper\AuthManager;
 use App\Model\Peserta;
@@ -78,7 +78,7 @@ class PesertaController extends Controller
                     return redirect()
                     ->back()
                     ->with('status', 'success')
-                    ->with('message', $sms['messages']['status']['description']);
+                    ->with('message', $sms['messages'][0]['status']['description']);
                 }
                 // return 'response peserta'; // menganalisa error
             }
