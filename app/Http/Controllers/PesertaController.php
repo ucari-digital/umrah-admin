@@ -50,7 +50,7 @@ class PesertaController extends Controller
 
     public function status(Request $request, $status, $nomor_peserta)
     {
-    	try {
+    	// try {
 	    	$data = DB::table('peserta')
             ->join('pendaftar', 'peserta.nomor_pendaftar', 'pendaftar.nomor_pendaftar')
             ->select('peserta.id', 'peserta.nomor_peserta', 'peserta.pin', 'pendaftar.telephone')
@@ -90,9 +90,9 @@ class PesertaController extends Controller
                 // return 'response peserta'; // menganalisa error
             }
             // return 'response data'; // menganalisa error
-    	} catch (\Exception $e) {
-	    	return $e->getMessage();
-    	}
+    	// } catch (\Exception $e) {
+	    // 	return $e->getMessage();
+    	// }
     }
 
     public function cekPeserta(Request $request)
