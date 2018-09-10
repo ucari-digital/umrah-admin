@@ -75,17 +75,10 @@ class PesertaController extends Controller
                     $param['text'] = 'Akun Anda telah diverifikasi dengan ID Peserta '.substr($data->nomor_peserta, 5).' dan PIN : '.$data->pin;
                     $param['nomor_peserta'] = $data->nomor_peserta;
                     $sms = Sms::send($param);
-                    if ($sms['status'] == 200) {
-                        return redirect()
-                        ->back()
-                        ->with('status', 'success')
-                        ->with('message', 'Data berhasil diverifikasi dan sms berhasil dikirim');
-                    } elseif ($sms['status'] == 402) {
-                        return redirect()
-                        ->back()
-                        ->with('status', 'failed')
-                        ->with('message', $sms['msg']);
-                    }
+                    return redirect()
+                    ->back()
+                    ->with('status', 'success')
+                    ->with('message', $sms['messages']['status']['description']);
                 }
                 // return 'response peserta'; // menganalisa error
             }
