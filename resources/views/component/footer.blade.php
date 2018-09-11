@@ -5,7 +5,7 @@ $column_width = !empty($column_width) ? $column_width : "[]";
 $header_alignment = !empty($header_alignment) ? $header_alignment : 'center';
 $data_table_display = !empty($data_table_display) ? $data_table_display : 'default';
 @endphp
-@if($data_table_display == 'default')
+{{-- @if($data_table_display == 'default') --}}
 <script type="text/javascript">
 	$(document).ready(function() {
     	var t = $('.table').DataTable({
@@ -29,7 +29,6 @@ $data_table_display = !empty($data_table_display) ? $data_table_display : 'defau
                     	columns: {{$column}}
                 	},
 	                customize: function(doc) {
-	                	console.log(doc);
 	                	doc.styles.tableHeader = {
 							alignment: '{{$header_alignment}}',
 							fillColor: '#747A81',
@@ -54,34 +53,34 @@ $data_table_display = !empty($data_table_display) ? $data_table_display : 'defau
 	            }
 	        ]
     	});
-	    t.on( 'order.dt search.dt', function () {
-	        t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
-	            cell.innerHTML = i+1;
-	            t.cell(cell).invalidate('dom'); 
-	        } );
-	    } ).draw();
+	    // t.on( 'order.dt search.dt', function () {
+	    //     t.column(0, {search:'applied', order:'applied'}).nodes().each( function (cell, i) {
+	    //         cell.innerHTML = i+1;
+	    //         t.cell(cell).invalidate('dom'); 
+	    //     } );
+	    // } ).draw();
     	$('.dataTables_paginate, .dataTables_wrapper').addClass('mt-2');
 	} );
 </script>
-@endif
+{{-- @endif --}}
 
 <script>
 	$(document).ready(function(){
-		$('.table-pg tbody').paginathing({
-			perPage: 5,
-			prevNext: true,
-			firstLast: true,
-			prevText: '&laquo;',
-			nextText: '&raquo;',
-			firstText: 'First',
-			lastText: 'Last',
-			containerClass: 'pagination-container mt-2 float-right',
-			ulClass: 'pagination',
-			liClass: 'page-item',
-			activeClass: 'active',
-			disabledClass: 'disabled',
-			insertAfter: '.place-pg'
-		});
+		// $('.table-pg tbody').paginathing({
+		// 	perPage: 5,
+		// 	prevNext: true,
+		// 	firstLast: true,
+		// 	prevText: '&laquo;',
+		// 	nextText: '&raquo;',
+		// 	firstText: 'First',
+		// 	lastText: 'Last',
+		// 	containerClass: 'pagination-container mt-2 float-right',
+		// 	ulClass: 'pagination',
+		// 	liClass: 'page-item',
+		// 	activeClass: 'active',
+		// 	disabledClass: 'disabled',
+		// 	insertAfter: '.place-pg'
+		// });
 	});
 	function searchField() {
 		var input, filter, table, tr, td, i;

@@ -39,11 +39,17 @@
 	    text-align: center;
 	    padding: 3px 0;
 	}
+	table{
+		width: 100% !important;
+	}
 	.table td, .table th {
 		padding: .45rem .75rem !important;
 	}
 	/* Sidebar */
 	.js-arrow.open{
 		padding: 0 !important;
+	}
+	#inputState, #inputSearch{
+		display: none;
 	}
 </style>

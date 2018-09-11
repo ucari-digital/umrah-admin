@@ -140,6 +140,15 @@ Route::middleware(['login'])->group(function(){
 	Route::post('book/hotel/peserta-post', 'BookController@saveHotelIndexPeserta');
 
 	/**
+	 * Departemen
+	 */
+	Route::get('departemen', 'DepartemenController@index');
+	Route::post('departemen-post', 'DepartemenController@save');
+	Route::get('departemen-data', 'DepartemenController@data');
+	Route::get('departemen-drop/{id}', 'DepartemenController@drop');
+	
+
+	/**
 	* SMS
 	*/
 	Route::get('sms', 'SMSController@index');
