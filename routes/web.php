@@ -10,13 +10,17 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-use App\Helper\Sms;
+use App\Helper\OperatorSimCard;
 Route::get('/', 'Auth\LoginController@index');
 Route::post('login', 'Auth\LoginController@login');
 
 Route::get('revoke', function(){
 	Auth::logout();
 	return redirect('/');
+});
+
+Route::get('operator', function(){
+	return OperatorSimCard::info('62813');
 });
 
 Route::middleware(['login'])->group(function(){

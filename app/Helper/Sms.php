@@ -2,7 +2,7 @@
 namespace App\Helper;
 
 use App\Helper\Guzzle;
-
+use App\Helper\OperatorSimCard;
 /**
  * SMS Helper untuk ADSMEDIA
  */
@@ -15,6 +15,13 @@ class Sms
 
 	public static function send($data)
 	{
+        $validasi_operator = OperatorSimCard::info($data['number']);
+        if ($validasi_operator) {
+            $from = "";
+        } else {
+            $from = 'Umrah+Uzbek';
+        }
+
 		$param = [
             'full_url' => true,
             'method' => 'POST',
@@ -29,7 +36,7 @@ class Sms
                     'Content-Type' => 'application/json',
                 ],
                 'json' => [
-                    'from' => 'Umrah+Uzbek',
+                    'from' => $from,
                     'to' => $data['number'],
                     'text' => $data['text']
                 ]
