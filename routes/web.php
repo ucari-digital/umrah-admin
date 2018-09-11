@@ -14,14 +14,6 @@ use App\Helper\Sms;
 Route::get('/', 'Auth\LoginController@index');
 Route::post('login', 'Auth\LoginController@login');
 
-Route::get('smsxxxx', function(){
-	$data = [
-		'number' => '628159510969',
-		'text' => 'Hello'
-	];
-	return Sms::send($data);
-});
-
 Route::get('revoke', function(){
 	Auth::logout();
 	return redirect('/');
@@ -86,6 +78,7 @@ Route::middleware(['login'])->group(function(){
 	Route::get('peserta/pin/{nomor_peserta}', 'PesertaController@sendPin');
 	Route::post('peserta/{status}/{nomor_peserta}', 'PesertaController@status');
 	Route::post('peserta-cek', 'PesertaController@cekPeserta');
+	Route::get('peserta-remove/{id}', 'PesertaController@hapusPeserta');
 
 	// Informasi peserta
 	Route::get('informasi-peserta', 'PesertaController@indexInformasiPeserta');

@@ -8,6 +8,7 @@ use App\Helper\Sms;
 use App\Helper\Response;
 use App\Helper\AuthManager;
 use App\Model\Peserta;
+use App\Model\Pendaftar;
 use App\Model\Transaksi;
 use App\Model\TransaksiDokumen;
 use App\Model\TransaksiPembayaran;
@@ -302,5 +303,29 @@ class PesertaController extends Controller
             }
         }
 
+    }
+
+    public function hapusPeserta($id)
+    {
+        $pendaftar = DB::table('pendaftar')
+        ->join('peserta', 'pendaftar.nomor_pendaftar', '=', 'peserta.nomor_pendaftar')
+        ->select('peserta.status', 'pendaftar.nomor_pendaftar')
+        ->where('peserta.status', '=', 'pending')
+        ->where('peserta.nomor_peserta', $id)
+        ->first();
+
+        if ($pendaftar) {
+            Pendaftar::where('nomor_pendaftar', $pendaftar->nomor_pendaftar)->delete();
+            Peserta::where('nomor_pendaftar', $pendaftar->nomor_pendaftar)->delete();
+            return redirect()
+                ->back()
+                ->with('status', 'success')
+                ->with('message', 'Data peserta berhasil dihapus');
+        } else {
+            return redirect()
+                ->back()
+                ->with('status', 'failed')
+                ->with('message', 'Data peserta gagal dihapus');
+        }
     }
 }

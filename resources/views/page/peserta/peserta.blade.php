@@ -80,6 +80,7 @@
 								<td>
 									<a href="#" class="btn btn-primary btn-sm popover-btn" data-toggle="popover" title="Masukan uang muka" data-nps="{{$item->nomor_peserta}}">Approv</a>
 									<a href="{{url('peserta/rejected').'/'.$item->nomor_peserta}}" class="btn btn-danger btn-sm">Reject</a>
+									<a href="{{url('peserta-remove/'.$item->nomor_peserta)}}" class="btn btn-secondary btn-sm">Hapus</a>
 								</td>
 								@endif
 							</tr>
