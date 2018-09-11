@@ -5,6 +5,11 @@ namespace App\Helper;
 class OperatorSimCard
 {
 	static function info($number){
+
+		// Remove +
+		$number = str_replace('+', '', $number);
+		$number = substr($number, 0,5);
+
 		$telkomsel = ['0811','0812','0813','0821','0822','0823','0852','0851','0853',];
 		$xl = ['0817','0818','0819','0859','0877','0878',];
 		$three = ['0895','0896','0897','0898','0899',];

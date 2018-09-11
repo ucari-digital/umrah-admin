@@ -17,34 +17,31 @@ class Sms
 	{
         $validasi_operator = OperatorSimCard::info($data['number']);
         if ($validasi_operator) {
-            $from = "";
+            $from = "SMSVIRO";
         } else {
             $from = 'Umrah+Uzbek';
         }
-
-        return $from;
-
-		// $param = [
-  //           'full_url' => true,
-  //           'method' => 'POST',
-  //           'url' => env('API_SMS_URL', '').'/restapi/sms/1/text/single',
-  //           'request' => [
-  //               'allow_redirects' => true,
-  //               'auth' => [
-  //                   'dimas10',
-  //                   '@Dimas123'
-  //               ],
-  //               'headers' => [
-  //                   'Content-Type' => 'application/json',
-  //               ],
-  //               'json' => [
-  //                   'from' => $from,
-  //                   'to' => $data['number'],
-  //                   'text' => $data['text']
-  //               ]
-  //           ]
-  //       ];
-		// return Guzzle::request($param);
+		$param = [
+            'full_url' => true,
+            'method' => 'POST',
+            'url' => env('API_SMS_URL', '').'/restapi/sms/1/text/single',
+            'request' => [
+                'allow_redirects' => true,
+                'auth' => [
+                    'dimas10',
+                    '@Dimas123'
+                ],
+                'headers' => [
+                    'Content-Type' => 'application/json',
+                ],
+                'json' => [
+                    'from' => $from,
+                    'to' => $data['number'],
+                    'text' => $data['text']
+                ]
+            ]
+        ];
+		return Guzzle::request($param);
 		// return $param;
 	}
 }
