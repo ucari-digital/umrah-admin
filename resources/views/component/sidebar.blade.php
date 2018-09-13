@@ -170,6 +170,18 @@
                 </li>
                 <li class="has-sub">
                     <a class="js-arrow" href="#">
+                    <i class="fa fa-building"></i>Departemen</a>
+                    <ul class="list-unstyled navbar__sub-list js-sub-list">
+                        <li>
+                            <a href="{{url('departemen')}}">Input</a>
+                        </li>
+                        <li>
+                            <a href="{{url('departemen-data')}}">Data</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="has-sub">
+                    <a class="js-arrow" href="#">
                     <i class="fa fa-calendar"></i>Tanggal Berangkat</a>
                     <ul class="list-unstyled navbar__sub-list js-sub-list">
                         <li>
