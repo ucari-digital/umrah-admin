@@ -11,8 +11,8 @@ class OperatorSimCard
 		$number = substr($number, 0,5);
 
 		$telkomsel = ['0811','0812','0813','0821','0822','0823','0852','0851','0853',];
-		$xl = ['0817','0818','0819','0859','0877','0878',];
-		$three = ['0895','0896','0897','0898','0899',];
+		$xl = ['0',];
+		$three = ['0',];
 		$operator_code[] = [
 			'telkomsel' => [
 				'operator' => 'telkomsel',
